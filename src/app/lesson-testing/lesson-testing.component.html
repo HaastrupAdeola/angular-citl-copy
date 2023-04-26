@@ -1,0 +1,42 @@
+<p-table
+  #dt1
+  [value]="todos"
+  [tableStyle]="{ 'min-width': '50rem' }"
+  [globalFilterFields]="['title']"
+>
+  <ng-template pTemplate="caption">
+    <div class="flex">
+      <button
+        pButton
+        label="Clear"
+        class="p-button-outlined"
+        icon="pi pi-filter-slash"
+      ></button>
+      <span class="p-input-icon-left ml-auto">
+        <i class="pi pi-search"></i>
+        <input
+          pInputText
+          type="text"
+          (input)="dt1.filterGlobal($event.target.value, 'contains')"
+          placeholder="Search keyword"
+        />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>UserId</th>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Completed</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-todo>
+    <tr>
+      <td>{{ todo.userId }}</td>
+      <td>{{ todo.id }}</td>
+      <td>{{ todo.title }}</td>
+      <td>{{ todo.completed }}</td>
+    </tr>
+  </ng-template>
+</p-table>
